@@ -68,10 +68,13 @@ export const TITLE_PADDING = 2;
 export const TOP_CORNER_LENGTH = 2;
 
 export const getInnerBoxProps = (props: TitledBoxProps): InnerBoxProps => {
-  const innerBoxProps = innerBoxPropNames.reduce(
-    (innerBoxProps, name) => ({ ...innerBoxProps, [name]: props[name] }),
-    {} as Partial<InnerBoxProps>
-  );
+  const innerBoxProps = Object
+    .keys(props)
+    .filter(isInnerBoxPropName)
+    .reduce(
+      (innerBoxProps, name) => ({ ...innerBoxProps, [name]: props[name] }),
+      {} as Partial<InnerBoxProps>
+    );
 
   if (!innerBoxProps.display) Object.assign(innerBoxProps, { display: 'flex' });
   return setBorderFlags(innerBoxProps) as InnerBoxProps;
@@ -97,6 +100,9 @@ export const getOuterBoxProps = (props: TitledBoxProps): OuterBoxProps => {
 
   return setBorderFlags(outerBoxProps) as OuterBoxProps;
 };
+
+export const isInnerBoxPropName = (name: string): name is InnerBoxPropName =>
+  innerBoxPropNames.includes(name as InnerBoxPropName);
 
 export const isOuterBoxPropName = (name: string): name is OuterBoxPropName =>
   !innerBoxPropNames.includes(name as InnerBoxPropName)
