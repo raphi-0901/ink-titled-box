@@ -5,10 +5,12 @@ import { Visibility } from "./demos/visiblity";
 import { TitleStylesUi } from "./demos/title-styles";
 import { Colors } from "./demos/colors";
 import { TextOnly } from "./demos/text";
+import { Padding } from "./demos/padding";
 
 const demos = {
   colors: Colors,
   justify: Justify,
+  padding: Padding,
   styles: Styles,
   visibility: Visibility,
   text: TextOnly,
