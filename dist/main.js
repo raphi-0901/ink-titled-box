@@ -130,7 +130,7 @@ var innerBoxPropNames = [
 var TITLE_PADDING = 2;
 var TOP_CORNER_LENGTH = 2;
 var getInnerBoxProps = (props) => {
-  const innerBoxProps = innerBoxPropNames.reduce((innerBoxProps2, name) => ({ ...innerBoxProps2, [name]: props[name] }), {});
+  const innerBoxProps = Object.keys(props).filter(isInnerBoxPropName).reduce((innerBoxProps2, name) => ({ ...innerBoxProps2, [name]: props[name] }), {});
   if (!innerBoxProps.display)
     Object.assign(innerBoxProps, { display: "flex" });
   return setBorderFlags(innerBoxProps);
@@ -145,6 +145,7 @@ var getOuterBoxProps = (props) => {
   const outerBoxProps = Object.keys(props).filter(isOuterBoxPropName).reduce((outerBoxProps2, name) => ({ ...outerBoxProps2, [name]: props[name] }), {});
   return setBorderFlags(outerBoxProps);
 };
+var isInnerBoxPropName = (name) => innerBoxPropNames.includes(name);
 var isOuterBoxPropName = (name) => !innerBoxPropNames.includes(name) || borderFlagNames.includes(name);
 var setBorderFlags = (record) => {
   for (const name of borderFlagNames) {
@@ -548,6 +549,7 @@ export {
   shiftPositions,
   setBorderFlags,
   isOuterBoxPropName,
+  isInnerBoxPropName,
   innerBoxPropNames,
   getTopBorderData,
   getStartTitlePositions,

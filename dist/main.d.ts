@@ -158,6 +158,7 @@ declare const borderFlagNames: readonly [
 ];
 export type BorderFlagName = (typeof borderFlagNames)[number];
 export declare const getOuterBoxProps: (props: TitledBoxProps) => OuterBoxProps;
+export declare const isInnerBoxPropName: (name: string) => name is InnerBoxPropName;
 export declare const isOuterBoxPropName: (name: string) => name is OuterBoxPropName;
 export declare const setBorderFlags: <Rec extends Partial<Record<BorderFlagName, boolean | undefined>>>(record: Rec) => Rec;
 export declare const shiftPositions: (positions: Array<number>, shiftCount: number) => Array<number>;
