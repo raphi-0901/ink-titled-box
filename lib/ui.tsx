@@ -47,39 +47,53 @@ export const TitledBox: React.FC<TitledBoxProps> = props => {
   };
 
   const box = useMemo(
-    () => new TitledBoxApi({
-      borderVisibility: {
-        top: borderTop!,
-        right: borderRight!,
-        bottom: borderBottom!,
-        left: borderLeft!,
-      },
-      size,
-      style: borderStyle,
+    () =>
+      new TitledBoxApi({
+        borderVisibility: {
+          top: borderTop!,
+          right: borderRight!,
+          bottom: borderBottom!,
+          left: borderLeft!,
+        },
+        size,
+        style: borderStyle,
+        titles,
+        topBorder: {
+          center: '',
+          color: borderBottomColor ?? borderColor,
+          dimColor: borderBottomDimColor ?? borderDimColor,
+          isVisible: borderBottom!,
+        },
+        titleJustify,
+        titleStyles,
+      }),
+    [
+      borderTop,
+      borderRight,
+      borderBottom,
+      borderLeft,
+      size.height,
+      size.width,
+      borderStyle,
       titles,
-      topBorder: {
-        center: '',
-        color: borderBottomColor ?? borderColor,
-        dimColor: borderBottomDimColor ?? borderDimColor,
-        isVisible: borderBottom!
-      },
+      borderColor,
+      borderBottomColor,
+      borderDimColor,
+      borderBottomDimColor,
       titleJustify,
-      titleStyles
-    }),
-    []
+      titleStyles,
+    ]
   );
 
-  const [data, setData] = useState<TitledBoxData>(box);
+  const [data, setData] = useState<TitledBoxData>(box.toJSON());
   const { topBorderData } = data;
 
-  useEffect(
-    () => {
-      if (!boxRef.current) return
+  useEffect(() => {
+      if (!boxRef.current) return;
+
       box.size = measureElement(boxRef.current);
       setData(box.toJSON());
-    },
-    [boxRef.current]
-  );
+  }, [box, boxRef.current]);
 
   return (
     <Box ref={boxRef} flexDirection="column" {...outerBoxProps}>

@@ -504,15 +504,30 @@ var TitledBox = (props) => {
     },
     titleJustify,
     titleStyles: titleStyles2
-  }), []);
-  const [data2, setData] = useState(box);
+  }), [
+    borderTop,
+    borderRight,
+    borderBottom,
+    borderLeft,
+    size.height,
+    size.width,
+    borderStyle,
+    titles,
+    borderColor,
+    borderBottomColor,
+    borderDimColor,
+    borderBottomDimColor,
+    titleJustify,
+    titleStyles2
+  ]);
+  const [data2, setData] = useState(box.toJSON());
   const { topBorderData } = data2;
   useEffect(() => {
     if (!boxRef.current)
       return;
     box.size = measureElement(boxRef.current);
     setData(box.toJSON());
-  }, [boxRef.current]);
+  }, [box, boxRef.current]);
   return /* @__PURE__ */ jsxDEV2(Box, {
     ref: boxRef,
     flexDirection: "column",
