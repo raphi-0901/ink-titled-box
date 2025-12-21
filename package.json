@@ -1,44 +1,41 @@
 {
-  "name": "@mishieck/ink-titled-box",
-  "version": "0.3.0-fork.0",
+  "name": "@rwirnsberger/ink-titled-box",
+  "version": "1.0.0",
   "author": {
-    "name": "Mishieck Mwale",
-    "email": "mishieckdev@gmail.com",
-    "url": "https://mishieck.vercel.app"
+    "name": "Raphael Wirnsberger",
+    "email": "raphi.tab@gmail.com",
+    "url": "https://github.com/raphi-0901"
   },
+  "homepage": "https://github.com/Mishieck/ink-titled-box",
   "repository": {
+    "type": "git",
     "url": "https://github.com/raphi-0901/ink-titled-box"
   },
-  "devDependencies": {
-    "@types/bun": "latest",
-    "@types/react": "^19.1.6",
-    "bun-plugin-dts": "^0.3.0",
-    "react-devtools-core": "^6.1.2",
-    "typescript": "^5"
-  },
-  "peerDependencies": {
-    "ink": "^6.0.0",
-    "react": "^19.1.0"
-  },
-  "exports": {
-    "default": "./dist/main.js",
-    "types": "./dist/main.d.ts"
-  },
-  "description": "A component for using titled borders in Ink.",
-  "files": [
-    "dist"
-  ],
+  "description": "Fork of ink-titled-box: A component for using titled borders in Ink.",
   "keywords": [
     "ink",
     "tui",
     "titled-borders"
   ],
   "license": "MIT",
+  "type": "module",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "demo": "bun run demos.tsx",
-    "build": "bun build.ts",
+    "build": "tsc",
     "prepare": "npm run build",
-    "publish": "bun publish --access=public"
+    "demo": "node dist/demos.js"
   },
-  "type": "module"
+  "devDependencies": {
+    "@types/react": "^19.1.6",
+    "react-devtools-core": "^6.1.2",
+    "typescript": "^5"
+  },
+  "peerDependencies": {
+    "ink": "^6.0.0",
+    "react": "^19.1.0"
+  }
 }
