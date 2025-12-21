@@ -1,24 +1,24 @@
 {
   "name": "@mishieck/ink-titled-box",
-  "version": "0.3.0",
+  "version": "0.3.0-fork.0",
   "author": {
     "name": "Mishieck Mwale",
     "email": "mishieckdev@gmail.com",
     "url": "https://mishieck.vercel.app"
   },
   "repository": {
-    "url": "https://github.com/Mishieck/ink-titled-box"
+    "url": "https://github.com/raphi-0901/ink-titled-box"
   },
   "devDependencies": {
     "@types/bun": "latest",
     "@types/react": "^19.1.6",
     "bun-plugin-dts": "^0.3.0",
-    "react-devtools-core": "^6.1.2"
+    "react-devtools-core": "^6.1.2",
+    "typescript": "^5"
   },
   "peerDependencies": {
     "ink": "^6.0.0",
-    "react": "^19.1.0",
-    "typescript": "^5"
+    "react": "^19.1.0"
   },
   "exports": {
     "default": "./dist/main.js",
@@ -37,6 +37,7 @@
   "scripts": {
     "demo": "bun run demos.tsx",
     "build": "bun build.ts",
+    "prepare": "npm run build",
     "publish": "bun publish --access=public"
   },
   "type": "module"
